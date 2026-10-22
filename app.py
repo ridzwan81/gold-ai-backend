@@ -25,7 +25,8 @@ model = lgb.Booster(model_file="xauusd_lgbm_model.txt")
 feature_cols = joblib.load("model_features.pkl")
 
 def fetch_and_prepare_features():
-    gold = yf.download(tickers="GC=F", interval="1h", period="5d", auto_adjust=True, progress=False)
+    # Change this line:
+    gold = yf.download(tickers="XAUUSD=X", interval="1h", period="5d", auto_adjust=True, progress=False)
     if isinstance(gold.columns, pd.MultiIndex):
         gold.columns = [col[0].lower() for col in gold.columns]
     else:
